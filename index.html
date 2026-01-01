@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy New Year, My Love ✨</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Nunito:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg1:#0f1020;
+      --bg2:#1b1f3b;
+      --accent:#ffd166;
+      --pink:#ff95b5;
+      --cream:#fff3e6;
+      --white:#ffffff;
+      --soft:#d9e7ff;
+      --card:#1f2447;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      min-height:100vh;
+      color:var(--white);
+      background:
+        radial-gradient(1200px 600px at 80% -100px, #2a2f5f 0%, transparent 60%),
+        radial-gradient(900px 600px at -20% -200px, #232753 0%, transparent 60%),
+        linear-gradient(180deg, var(--bg1), var(--bg2));
+      font-family:'Nunito', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      overflow-x:hidden;
+    }
+
+    /* Floating stars */
+    .sky{
+      position:fixed; inset:0; pointer-events:none; z-index:0;
+    }
+    .star{position:absolute; background:radial-gradient(circle, #fff 0%, #fff0 60%); width:2px; height:2px; opacity:.8; animation: twinkle 2.2s infinite alternate;}
+    @keyframes twinkle { from{opacity:.3; transform:scale(.9)} to{opacity:.9; transform:scale(1.3)} }
+
+    /* Header */
+    header{
+      position:relative;
+      text-align:center;
+      padding:90px 20px 40px;
+      z-index:1;
+    }
+    .title{
+      font-family:'Playfair Display', serif;
+      font-weight:700;
+      font-size: clamp(34px, 6vw, 64px);
+      letter-spacing:.5px;
+      color:var(--cream);
+      text-shadow:0 8px 30px rgba(0,0,0,.45);
+    }
+    .sparkle{
+      display:inline-block;
+      color:var(--accent);
+      filter:drop-shadow(0 0 10px rgba(255,215,102,.6));
+      animation: glow 2.5s ease-in-out infinite;
+    }
+    @keyframes glow {
+      0%,100%{text-shadow:0 0 20px rgba(255,215,102,.5)}
+      50%{text-shadow:0 0 40px rgba(255,215,102,.9)}
+    }
+    .subtitle{
+      margin-top:10px;
+      font-size: clamp(16px, 2.5vw, 20px);
+      color:var(--soft);
+    }
+
+    /* Fireworks */
+    .fireworks{position:relative; height:160px; margin:20px auto 0; max-width:900px;}
+    .fw{position:absolute; width:8px; height:8px; border-radius:50%; background:var(--accent); box-shadow:0 0 12px var(--accent); animation:burst 2.6s ease-out infinite;}
+    .fw:nth-child(2){left:15%; animation-delay:.4s; background:#ff7eb6; box-shadow:0 0 12px #ff7eb6;}
+    .fw:nth-child(3){left:35%; animation-delay:.9s; background:#7ef7ff; box-shadow:0 0 12px #7ef7ff;}
+    .fw:nth-child(4){left:55%; animation-delay:1.3s; background:#a4ff78; box-shadow:0 0 12px #a4ff78;}
+    .fw:nth-child(5){left:75%; animation-delay:1.7s; background:#ffd166; box-shadow:0 0 12px #ffd166;}
+    @keyframes burst {
+      0%{top:100%; transform:translateY(0) scale(1); opacity:0}
+      15%{opacity:1}
+      40%{top:25%; transform:translateY(-30px) scale(1.2)}
+      60%{top:15%; transform:scale(1.8)}
+      100%{top:10%; box-shadow:0 0 80px currentColor; opacity:0}
+    }
+
+    /* Sections */
+    section{
+      position:relative;
+      z-index:1;
+      padding:30px 20px;
+      max-width:1000px;
+      margin:0 auto;
+    }
+    .card{
+      background:rgba(255,255,255,.06);
+      backdrop-filter: blur(6px);
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:18px;
+      padding:26px;
+      box-shadow:0 20px 50px rgba(0,0,0,.35);
+    }
+
+    /* Handwritten letter */
+    .letter{
+      background:linear-gradient(180deg, rgba(255,243,230,.25), rgba(255,243,230,.08));
+      color:#fffbea;
+    }
+    .letter h2{
+      font-family:'Pacifico', cursive;
+      font-size: clamp(26px, 4.5vw, 36px);
+      color:var(--pink);
+      margin:0 0 12px 0;
+      text-shadow:0 6px 24px rgba(255,149,181,.35);
+    }
+    .letter p{
+      font-size: clamp(16px, 2.3vw, 18px);
+      line-height:1.8;
+    }
+
+    /* Gallery */
+    .gallery{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(180px,1fr));
+      gap:14px;
+    }
+    .photo{
+      position:relative;
+      border-radius:14px;
+      overflow:hidden;
+      aspect-ratio:1/1;
+      background:#111a;
+      box-shadow:0 14px 34px rgba(0,0,0,.35);
+    }
+    .photo img{width:100%; height:100%; object-fit:cover; display:block; filter:saturate(1.1) contrast(1.05)}
+    .photo::after{
+      content:"";
+      position:absolute; inset:0;
+      background:linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,.35));
+    }
+    .caption{
+      position:absolute; left:12px; bottom:12px; right:12px;
+      font-size:14px; color:#fff; opacity:.9;
+    }
+
+    /* Gift box surprise */
+    .gift-wrap{display:flex; justify-content:center; align-items:center; gap:20px; flex-wrap:wrap}
+    .gift{
+      position:relative; width:170px; height:170px; border-radius:18px;
+      background:linear-gradient(135deg, #ff95b5 0%, #ff6b9a 100%);
+      box-shadow:0 18px 40px rgba(255,107,154,.35);
+      cursor:pointer; transition: transform .25s ease;
+    }
+    .gift:hover{transform:translateY(-4px)}
+    .ribbon{position:absolute; inset:0; background:
+      linear-gradient(90deg, rgba(255,255,255,.35) 0 6px, transparent 6px 164px, rgba(255,255,255,.35) 164px 170px),
+      linear-gradient(180deg, rgba(255,255,255,.35) 0 6px, transparent 6px 164px, rgba(255,255,255,.35) 164px 170px);
+      border-radius:18px;
+    }
+    .lid{position:absolute; top:-18px; left:-6px; right:-6px; height:40px; border-radius:20px;
+      background:linear-gradient(135deg, #ffd1e0, #ffc0d4);
+      box-shadow:0 10px 26px rgba(0,0,0,.25);
+      transition:transform .5s ease, opacity .5s ease;
+      transform-origin:left center;
+    }
+    .hearts{
+      position:absolute; inset:0; display:flex; justify-content:center; align-items:center; gap:6px;
+      opacity:0; transition:opacity .5s ease;
+    }
+    .heart{
+      width:18px; height:18px; background:var(--cream);
+      display:inline-block; transform:rotate(45deg);
+      animation: pop 1.8s ease infinite alternate;
+    }
+    .heart::before,.heart::after{
+      content:""; position:absolute; width:18px; height:18px; background:inherit; border-radius:50%;
+    }
+    .heart::before{left:-9px}
+    .heart::after{top:-9px}
+    @keyframes pop { from{transform:translateY(6px) rotate(45deg) scale(.95)} to{transform:translateY(-6px) rotate(45deg) scale(1.15)} }
+
+    .reasons{display:none; margin-top:18px}
+    .reasons li{margin:8px 0; line-height:1.6}
+    .reveal{margin-top:14px; background:var(--accent); color:#1c1b26; border:none; padding:10px 14px; border-radius:10px; font-weight:700; cursor:pointer}
+
+    /* Music & countdown */
+    .controls{display:flex; flex-wrap:wrap; gap:12px; align-items:center}
+    .btn{
+      background:#2b3166; color:#e7eaff; border:1px solid rgba(255,255,255,.2);
+      padding:10px 14px; border-radius:10px; cursor:pointer; font-weight:700;
+    }
+    .btn.secondary{background:#394081}
+    .countdown{
+      margin-top:10px; font-weight:700; color:var(--accent);
+    }
+
+    /* Footer */
+    footer{padding:40px 20px 60px; text-align:center; color:#dbe6ff}
+    .closing{
+      font-family:'Playfair Display', serif; font-size: clamp(20px, 3vw, 26px);
+    }
+
+    /* Responsive tweaks */
+    @media (max-width:480px){
+      .gift{width:150px; height:150px}
+      .lid{height:34px}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Decorative sky with stars -->
+  <div class="sky" id="sky"></div>
+
+  <header>
+    <div class="title">Happy New Year, My Love <span class="sparkle">✨</span></div>
+    <div class="subtitle">No matter the distance, u're always close to me.</div>
+    <div class="fireworks" aria-hidden="true">
+      <div class="fw" style="left:5%"></div>
+      <div class="fw"></div>
+      <div class="fw"></div>
+      <div class="fw"></div>
+      <div class="fw"></div>
+    </div>
+  </header>
+
+  <section class="card letter">
+    <h2>My handwritten letter to u</h2>
+    <p>
+      Even with miles between us,u fill my days with warmth and color. Tonight, I’m sending u a tiny
+      constellation of our moments—a page that glows with the things I love about u, and the future
+      I can’t wait to live together. Thank u for being my constant, my calm, and my spark.
+    </p>
+    <p>
+      Here’s to a year of sweet calls, surprise notes, shared playlists, and countdowns that end with uss.
+      I’m so proud of u—of ur kindness, ur grit, and ur laugh that always finds me.
+      Happy New Year, my love. U’re home.
+    </p>
+  </section>
+
+  <section class="card">
+    <h3 style="margin:0 0 14px 0">Our little gallery</h3>
+    <div class="gallery">
+      <!-- Replace image URLs with your photos -->
+      <figure class="photo">
+        <img src="https://images.unsplash.com/photo-1516675302205-2294bfd1f7c1?q=80&w=800&auto=format&fit=crop" alt="City lights">
+        <figcaption class="caption">City lights that feel like our late-night calls.</figcaption>
+      </figure>
+      <figure class="photo">
+        <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=800&auto=format&fit=crop" alt="Stars">
+        <figcaption class="caption">Stars I count when I miss u.</figcaption>
+      </figure>
+      <figure class="photo">
+        <img src="https://images.unsplash.com/photo-1520975922215-c1b97f6b8cd1?q=80&w=800&auto=format&fit=crop" alt="Cozy cafe">
+        <figcaption class="caption">A cozy table waiting for uss.</figcaption>
+      </figure>
+      <figure class="photo">
+        <img src="https://images.unsplash.com/photo-1482192505345-5655af888cc4?q=80&w=800&auto=format&fit=crop" alt="Sunrise">
+        <figcaption class="caption">Sunrise plans: u, me, and quiet.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="card">
+    <h3 style="margin:0 0 10px 0">A gift just for u</h3>
+    <div class="gift-wrap">
+      <div class="gift" id="gift" aria-label="Click to open the gift">
+        <div class="lid" id="lid"></div>
+        <div class="ribbon"></div>
+        <div class="hearts" id="hearts">
+          <span class="heart"></span>
+          <span class="heart" style="animation-delay:.2s"></span>
+          <span class="heart" style="animation-delay:.4s"></span>
+          <span class="heart" style="animation-delay:.6s"></span>
+        </div>
+      </div>
+
+      <div style="max-width:520px">
+        <p>Click the gift box to open it. Then reveal the list below.</p>
+        <button class="reveal" id="revealBtn">Reveal: 10 reasons I love u</button>
+        <ol class="reasons" id="reasons">
+          <li>Ur laugh finds me even through the static.</li>
+          <li>The way u care—quietly, consistently, completely.</li>
+          <li>Ur courage to build the life u dream of.</li>
+          <li>How ur messages turn ordinary moments golden.</li>
+          <li>Ur smile that rewires my day.</li>
+          <li>The patience u show when things get tough.</li>
+          <li>Ur curiosity about the little things.</li>
+          <li>The way u remember our tiny rituals.</li>
+          <li>Ur voice that feels like home.</li>
+          <li>U choose us, again and again.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h3 style="margin:0 0 10px 0">Our soundtrack and countdown</h3>
+    <div class="controls">
+      <!-- Replace src with your shared song URL or local file -->
+      <audio id="song" src="https://cdn.pixabay.com/audio/2022/10/12/audio_3acb9c5eb1.mp3" preload="none"></audio>
+      <button class="btn" id="playBtn">Play our song</button>
+      <button class="btn secondary" id="pauseBtn">Pause</button>
+      <div class="countdown" id="countdown">Countdown: —</div>
+    </div>
+    <p style="margin-top:10px; color:#cfe1ff">
+      
+    </p>
+  </section>
+
+  <footer>
+    <div class="closing">No matter the distance, u’re always close to me babygurll 💖</div>
+    <div style="opacity:.7; margin-top:8px; font-size:14px">Made with love, for u.</div>
+  </footer>
+
+  <script>
+    // Generate soft star field
+    const sky = document.getElementById('sky');
+    const STAR_COUNT = 120;
+    for (let i=0;i<STAR_COUNT;i++){
+      const s = document.createElement('div');
+      s.className='star';
+      const x = Math.random()*100;
+      const y = Math.random()*100;
+      const size = Math.random()*2+1;
+      s.style.left = x+'%';
+      s.style.top = y+'%';
+      s.style.width = size+'px';
+      s.style.height = size+'px';
+      s.style.animationDelay = (Math.random()*2)+'s';
+      sky.appendChild(s);
+    }
+
+    // Gift box interaction
+    const gift = document.getElementById('gift');
+    const lid = document.getElementById('lid');
+    const hearts = document.getElementById('hearts');
+    let open = false;
+    gift.addEventListener('click', ()=>{
+      open = !open;
+      lid.style.transform = open ? 'rotate(-16deg) translateY(-10px)' : 'rotate(0) translateY(0)';
+      lid.style.opacity = open ? '.95' : '1';
+      hearts.style.opacity = open ? '1' : '0';
+    });
+
+    // Reveal reasons
+    const revealBtn = document.getElementById('revealBtn');
+    const reasons = document.getElementById('reasons');
+    revealBtn.addEventListener('click', ()=>{
+      reasons.style.display = reasons.style.display === 'block' ? 'none' : 'block';
+      revealBtn.textContent = reasons.style.display === 'block' ? 'Hide list' : 'Reveal: 10 reasons I love you';
+    });
+
+    // Music controls
+    const song = document.getElementById('song');
+    document.getElementById('playBtn').addEventListener('click', ()=>{ song.play(); });
+    document.getElementById('pauseBtn').addEventListener('click', ()=>{ song.pause(); });
+
+    // Playful countdown to next midnight local time
+    const countdownEl = document.getElementById('countdown');
+    function nextMidnight(){
+      const now = new Date();
+      const target = new Date(now);
+      target.setHours(24,0,0,0); // Next midnight
+      return target;
+    }
+    function updateCountdown(){
+      const now = new Date();
+      const target = nextMidnight();
+      const ms = target - now;
+      if (ms <= 0) { countdownEl.textContent = 'Countdown: Happy New Day!'; return; }
+      const h = Math.floor(ms/ (1000*60*60));
+      const m = Math.floor(ms/ (1000*60)) % 60;
+      const s = Math.floor(ms/1000) % 60;
+      countdownEl.textContent = `Countdown: ${String(h).padStart(2,'0')}h : ${String(m).padStart(2,'0')}m : ${String(s).padStart(2,'0')}s`;
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
